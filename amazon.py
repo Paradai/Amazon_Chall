@@ -13,9 +13,7 @@ import random
 
 #Grid, path length and number of runs is printed out.
 
-
 def assess_route(matrix, start_loc, end_loc):
-
   grid = Grid(matrix=matrix)
   start = grid.node(start_loc[0], start_loc[1])
   end = grid.node(end_loc[0], end_loc[1])
@@ -59,7 +57,6 @@ for y in range(x_grid):
   for x in range(y_grid):
     matrix_row.append(1)
   matrix.append(matrix_row)
-
 print(matrix)
 
 #Add locations of starting/end points.
@@ -82,21 +79,17 @@ while i < obstacles:
     i += 1
 
 print("List of obstacle locations: " + str(obstacles_loc))
-#print("First obstacle to eliminate x: " +  str(obstacles_loc[2][0]))
-#print("First obstacle to eliminate y: " +  str(obstacles_loc[2][1]))
 print("Matrix grid layout:" + str(matrix))
-#print(matrix[0][0])
-
 
 #Assess whether path is reachable with current grid layout.
-
-delivered = False
-while not delivered:
-  path_length = assess_route(matrix, start_loc, end_loc)
 
 #If delivery fails, select the 1st obstacle in the obstacle list to remove
 #and overwrite the obstacle location with a 1 to become free space
 #Then repeat the procedure using the new grid.
+
+delivered = False
+while not delivered:
+  path_length = assess_route(matrix, start_loc, end_loc)
 
   if path_length == 0:
     print("Unable to reach delivery spot")
